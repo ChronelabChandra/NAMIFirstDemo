@@ -3,23 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_line">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.example.androiddemoapp.views.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/nav_line"
+        android:name="com.example.androiddemoapp.views.fragment.LineFragment"
+        android:label="@string/menu_line"
+        tools:layout="@layout/fragment_line" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.androiddemoapp.views.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_rectangle"
+        android:name="com.example.androiddemoapp.views.fragment.RectangleFragment"
+        android:label="@string/menu_rectangle"
+        tools:layout="@layout/fragment_rectangle" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.androiddemoapp.views.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_triangle"
+        android:name="com.example.androiddemoapp.views.fragment.TriangleFragment"
+        android:label="@string/menu_triangle"
+        tools:layout="@layout/fragment_triangle" />
+
+    <fragment
+        android:id="@+id/nav_square"
+        android:name="com.example.androiddemoapp.views.fragment.SquareFragment"
+        android:label="@string/menu_squre"
+        tools:layout="@layout/fragment_square" />
 </navigation>

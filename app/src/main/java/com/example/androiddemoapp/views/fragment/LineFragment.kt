@@ -1,4 +1,4 @@
-package com.example.androiddemoapp.views
+package com.example.androiddemoapp.views.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,22 +9,23 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.androiddemoapp.R
 import androidx.lifecycle.Observer
+import com.example.androiddemoapp.views.LineViewModel
 
 
-class HomeFragment : Fragment() {
+class LineFragment : Fragment() {
 
-    private lateinit var homeViewModel: HomeViewModel
+    private lateinit var lineViewModel: LineViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-            ViewModelProviders.of(this).get(HomeViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
+        lineViewModel =
+            ViewModelProviders.of(this).get(LineViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_line, container, false)
+        val textView: TextView = root.findViewById(R.id.text_line)
+        lineViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

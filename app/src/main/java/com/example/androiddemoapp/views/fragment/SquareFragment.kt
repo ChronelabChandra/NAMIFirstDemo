@@ -1,4 +1,4 @@
-package com.example.androiddemoapp.views
+package com.example.androiddemoapp.views.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,23 +9,26 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.Observer
 import com.example.androiddemoapp.R
+import com.example.androiddemoapp.views.SquareViewModel
 
-class SlideshowFragment : Fragment() {
 
-    private lateinit var slideshowViewModel: SlideshowViewModel
+class SquareFragment : Fragment() {
+
+    private lateinit var squareViewModel: SquareViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        slideshowViewModel =
-            ViewModelProviders.of(this).get(SlideshowViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_slideshow, container, false)
-        val textView: TextView = root.findViewById(R.id.text_slideshow)
-        slideshowViewModel.text.observe(viewLifecycleOwner, Observer {
+        squareViewModel =
+            ViewModelProviders.of(this).get(SquareViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_square, container, false)
+        val textView: TextView = root.findViewById(R.id.text_square)
+        squareViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root
     }
+
 }
