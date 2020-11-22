@@ -4,6 +4,6 @@ Reference: https://www.tutorialspoint.com/kotlin/index.htm
 - Create fragment (View Model, Fragment and xml inside layout created automatically)
 - Add string in strings.xml
 - Add item in activity_main_drawer.xml  --- Inside menu folder
-- Add fragment in mobile_navigation.xml
+- Add fragment in mobile_navigation.xml  --- Inside navigation folder
 - Update code in SqureFragment and SqureViewModel
 - Add in MainActivity
