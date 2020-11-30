@@ -23,6 +23,9 @@ class LoginActivity : AppCompatActivity() {
 //        intent.putExtra(INTENT_KEY_USER, user)
 //
         startActivity(intent)
+//        finish()
+
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

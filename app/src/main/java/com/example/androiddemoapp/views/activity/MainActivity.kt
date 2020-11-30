@@ -2,6 +2,7 @@ package com.example.androiddemoapp.views.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
@@ -17,6 +18,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
 
     var TAG = "MainActivity"
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        Log.e(TAG, "Back button pressed")
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
