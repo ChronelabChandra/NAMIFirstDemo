@@ -16,3 +16,7 @@ Reference: https://youtu.be/e5_C9e_gKOM
 - Add AppbarLayout
 - Put toolbar inside AppBarLayout (Standard height for tool bar is 56dp, better to use ?attr/actionBarSize)
 - Add RelativeLayout
+
+
+@Drawing on Canvas Objects
+https://developer.android.com/codelabs/advanced-android-kotlin-training-canvas#0
