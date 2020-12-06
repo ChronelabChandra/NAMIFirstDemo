@@ -8,7 +8,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
@@ -17,7 +19,8 @@ import androidx.lifecycle.Observer
 
 
 class LineFragment : Fragment() {
-
+    private lateinit var drawLayout: LinearLayout
+    private lateinit var btnDrawLine: Button
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,13 +30,17 @@ class LineFragment : Fragment() {
 
         val root = inflater.inflate(R.layout.fragment_line, container, false)
 //        val textView: TextView = root.findViewById(R.id.text_line)
-
+        drawLayout = root.findViewById(R.id.drawLayout)
+        btnDrawLine = root.findViewById(R.id.btnDrawLine)
+        btnDrawLine.setOnClickListener {
+            drawLine()
+        }
         return root
     }
 
     override fun onResume() {
         super.onResume()
-        drawLine()
+//        drawLine()
     }
 
     private fun drawLine() {
@@ -45,7 +52,7 @@ class LineFragment : Fragment() {
         val paint = Paint()
         paint.color = Color.BLACK
         paint.style = Paint.Style.STROKE
-        paint.strokeWidth = 2f
+        paint.strokeWidth = 8f
         paint.isAntiAlias = true
 
         val offset = 50
@@ -56,7 +63,7 @@ class LineFragment : Fragment() {
             canvas.height / 2.toFloat(),
             paint)
 
-        val imageView = ImageView(this)
+        val imageView = ImageView(activity)
         imageView.setImageBitmap(bitmap)
         drawLayout.removeAllViews()
         drawLayout.addView(imageView)
