@@ -21,6 +21,9 @@ class RectangleFragment : Fragment() {
 
     private lateinit var drawLayout: LinearLayout
     private lateinit var btnDrawLine: Button
+    private lateinit var seekBar: SeekBar
+
+    private var strokeWidth = 3
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,14 +35,16 @@ class RectangleFragment : Fragment() {
 
         drawLayout = root.findViewById(R.id.drawLayout)
         btnDrawLine = root.findViewById(R.id.btnDrawLine)
+        seekBar = root.findViewById(R.id.seekBar)
         btnDrawLine.setOnClickListener {
             drawRectangle()
         }
 
-        seekBar?.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+        seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int,
                                            fromUser: Boolean) {
                 Toast.makeText(activity, "seekbar progress: $progress", Toast.LENGTH_SHORT).show()
+                strokeWidth = progress
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar) {
@@ -65,7 +70,7 @@ class RectangleFragment : Fragment() {
 
         shapeDrawable.paint.color = Color.BLACK
         shapeDrawable.paint.style = Paint.Style.STROKE
-        shapeDrawable.paint.strokeWidth = 10f
+        shapeDrawable.paint.strokeWidth = strokeWidth.toFloat()
         shapeDrawable.draw(canvas)
 
         val imageView = ImageView(activity)

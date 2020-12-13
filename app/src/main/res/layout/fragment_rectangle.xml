@@ -20,7 +20,9 @@
     <SeekBar
         android:id="@+id/seekBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:max="10"
+        android:progress="3"/>
 
     <Button
         android:id="@+id/btnDrawLine"
