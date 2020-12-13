@@ -12,11 +12,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.LinearLayout
+import android.widget.*
 import androidx.fragment.app.Fragment
 import com.example.androiddemoapp.R
+import kotlinx.android.synthetic.main.fragment_rectangle.*
 
 class RectangleFragment : Fragment() {
 
@@ -36,6 +35,22 @@ class RectangleFragment : Fragment() {
         btnDrawLine.setOnClickListener {
             drawRectangle()
         }
+
+        seekBar?.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar, progress: Int,
+                                           fromUser: Boolean) {
+                Toast.makeText(activity, "seekbar progress: $progress", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar) {
+                Toast.makeText(activity, "seekbar touch started!", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar) {
+                Toast.makeText(activity, "seekbar touch stopped!", Toast.LENGTH_SHORT).show()
+            }
+        })
+
         return root
     }
 
@@ -43,6 +58,7 @@ class RectangleFragment : Fragment() {
         val bitmap: Bitmap = Bitmap.createBitmap(1000, 1000, Bitmap.Config.ARGB_8888)
         val canvas = Canvas(bitmap)
         canvas.drawColor(Color.RED)
+
 
         val shapeDrawable = ShapeDrawable(RectShape())  //OvalShape()
         shapeDrawable.setBounds(100, 100, 600, 400)
