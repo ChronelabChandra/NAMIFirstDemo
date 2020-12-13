@@ -21,6 +21,7 @@ class RectangleFragment : Fragment() {
 
     private lateinit var drawLayout: LinearLayout
     private lateinit var btnDrawLine: Button
+    private lateinit var txtProgress: TextView
     private lateinit var seekBar: SeekBar
 
     private var strokeWidth = 3
@@ -36,6 +37,9 @@ class RectangleFragment : Fragment() {
         drawLayout = root.findViewById(R.id.drawLayout)
         btnDrawLine = root.findViewById(R.id.btnDrawLine)
         seekBar = root.findViewById(R.id.seekBar)
+        txtProgress = root.findViewById(R.id.txtProgress)
+        txtProgress.text = "Value: $strokeWidth"
+
         btnDrawLine.setOnClickListener {
             drawRectangle()
         }
@@ -43,16 +47,17 @@ class RectangleFragment : Fragment() {
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int,
                                            fromUser: Boolean) {
-                Toast.makeText(activity, "seekbar progress: $progress", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(activity, "seekbar progress: $progress", Toast.LENGTH_SHORT).show()
                 strokeWidth = progress
+                txtProgress.text = "Value: $strokeWidth"
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar) {
-                Toast.makeText(activity, "seekbar touch started!", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(activity, "seekbar touch started!", Toast.LENGTH_SHORT).show()
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar) {
-                Toast.makeText(activity, "seekbar touch stopped!", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(activity, "seekbar touch stopped!", Toast.LENGTH_SHORT).show()
             }
         })
 

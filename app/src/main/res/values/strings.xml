@@ -19,6 +19,7 @@
     <string name="draw_circle">Draw Circle</string>
     <string name="draw_square">Draw Square</string>
     <string name="draw_rectangle">Draw Rectangle</string>
+    <string name="textview">TextView</string>
 
 
 </resources>
