@@ -27,6 +27,7 @@
     <string name="enable_gps_message">Enable gps on your mobile phone</string>
     <string name="open_location_settings">Open location settings</string>
     <string name="cancel">Cancel</string>
+    <string name="menu_sensor">Sensor</string>
 
 
 </resources>

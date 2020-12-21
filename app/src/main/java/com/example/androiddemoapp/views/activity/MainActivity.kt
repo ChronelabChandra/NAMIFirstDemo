@@ -43,7 +43,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_rectangle,
                 R.id.nav_triangle,
                 R.id.nav_square,
-                R.id.nav_map
+                R.id.nav_map,
+                R.id.nav_sensor,
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
