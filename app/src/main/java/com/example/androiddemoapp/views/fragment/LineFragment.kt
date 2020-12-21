@@ -5,22 +5,29 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.util.Log
+import android.view.*
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
 import com.example.androiddemoapp.R
-import androidx.lifecycle.Observer
+import kotlinx.android.synthetic.main.fragment_line.*
 
 
-class LineFragment : Fragment() {
+class LineFragment : Fragment(), View.OnTouchListener {
+    private lateinit var root: View
     private lateinit var drawLayout: LinearLayout
     private lateinit var btnDrawLine: Button
+
+    private lateinit var imageView: ImageView
+    lateinit var bitmap: Bitmap
+    lateinit var canvas: Canvas
+    lateinit var paint: Paint
+    var downx = 0f
+    var downy = 0f
+    var upx = 0f
+    var upy = 0f
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,15 +35,46 @@ class LineFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val root = inflater.inflate(R.layout.fragment_line, container, false)
-//        val textView: TextView = root.findViewById(R.id.text_line)
+        root = inflater.inflate(R.layout.fragment_line, container, false)
+        return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        //        val textView: TextView = root.findViewById(R.id.text_line)
         drawLayout = root.findViewById(R.id.drawLayout)
         btnDrawLine = root.findViewById(R.id.btnDrawLine)
         btnDrawLine.setOnClickListener {
             drawLine()
         }
-        return root
+
+        imageView = root.findViewById(R.id.imageView)
+        val currentDisplay: Display = requireActivity().windowManager.defaultDisplay
+        val dw = currentDisplay.width.toFloat()
+        val dh = currentDisplay.height.toFloat()
+
+        /*bitmap = Bitmap.createBitmap(
+            dw.toInt(), dh.toInt(),
+            Bitmap.Config.ARGB_8888
+        )*/
+
+        dragDrawLayout.post {
+            bitmap = Bitmap.createBitmap(
+                dragDrawLayout.width, dragDrawLayout.height,
+                Bitmap.Config.ARGB_8888
+            )
+            canvas = Canvas(bitmap)
+            paint = Paint()
+            paint.color = Color.BLACK
+            paint.strokeWidth = 10f
+            imageView.setImageBitmap(bitmap)
+
+            imageView.setOnTouchListener(this)
+        }
+
+
     }
+
 
     override fun onResume() {
         super.onResume()
@@ -61,11 +99,36 @@ class LineFragment : Fragment() {
             canvas.height / 2.toFloat(),
             canvas.width - offset.toFloat(),
             canvas.height / 2.toFloat(),
-            paint)
+            paint
+        )
 
         val imageView = ImageView(activity)
         imageView.setImageBitmap(bitmap)
         drawLayout.removeAllViews()
         drawLayout.addView(imageView)
     }
+
+    override fun onTouch(v: View, event: MotionEvent): Boolean {
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+                downx = event.x
+                downy = event.y
+            }
+
+            MotionEvent.ACTION_MOVE -> {
+            }
+
+            MotionEvent.ACTION_UP -> {
+                upx = event.x
+                upy = event.y
+                canvas.drawLine(downx, downy, upx, upy, paint)
+                imageView.invalidate()
+            }
+
+            MotionEvent.ACTION_CANCEL -> {
+            }
+        }
+        return true
+    }
+
 }
