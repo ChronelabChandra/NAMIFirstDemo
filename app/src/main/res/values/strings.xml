@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">AndroidDemoApp</string>
+
+    <string name="google_maps_credential">AIzaSyCVnsJgmt9ybD_p0FFXb1Ty123t9K9_nBk</string>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -20,6 +23,10 @@
     <string name="draw_square">Draw Square</string>
     <string name="draw_rectangle">Draw Rectangle</string>
     <string name="textview">TextView</string>
+    <string name="menu_map">Map</string>
+    <string name="enable_gps_message">Enable gps on your mobile phone</string>
+    <string name="open_location_settings">Open location settings</string>
+    <string name="cancel">Cancel</string>
 
 
 </resources>
