@@ -12,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.androiddemoapp.R
+import kotlinx.android.synthetic.main.fragment_gyroscope.*
 
 
 class GyroscopeFragment : Fragment(), SensorEventListener {
@@ -63,5 +64,23 @@ class GyroscopeFragment : Fragment(), SensorEventListener {
          }*/
 
         Log.i(TAG, "X: $x Y: $y Z: $z")
+        textView.text = "X: $x  \nY: $y \nZ: $z"
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+        // accelerometer sensors
+        sensorManager.registerListener(
+            this,
+            sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
+            SensorManager.SENSOR_DELAY_NORMAL
+        )
+    }
+
+    override fun onPause() {
+        // unregister listener
+        super.onPause()
+        sensorManager.unregisterListener(this)
     }
 }

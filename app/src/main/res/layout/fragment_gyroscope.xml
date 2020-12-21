@@ -4,10 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".views.fragment.GyroscopeFragment">
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_margin="16dp"
         android:text="Shake to get a toast and to switch color" />
 
 </FrameLayout>
